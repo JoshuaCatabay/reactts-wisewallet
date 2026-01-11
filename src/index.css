@@ -1,0 +1,200 @@
+/* Remove arrows in number inputs (Chrome, Edge, Safari) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove arrows (Firefox) */
+input[type="number"] {
+  appearance: textfield;
+}
+
+/* Remove number input arrows */
+.no-arrows::-webkit-inner-spin-button,
+.no-arrows::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-arrows {
+  appearance: textfield;
+}
+
+:root {
+  /* App background */
+  --bg: #f4f6f8;
+
+  /* Primary text */
+  --text: #1f2937;
+
+  /* Card / surface */
+  --card-bg: #ffffff;
+
+  /* Borders & dividers */
+  --border: #e5e7eb;
+
+  /* Toggle colors */
+  --toggle-bg: #d1d5db;
+  --toggle-ball: #ffffff;
+  --toggle-bg-active: #4e73df;
+}
+
+
+.dark {
+  /* App background */
+  --bg: #181a1f;
+
+  /* Primary text */
+  --text: #e5e7eb;
+
+  /* Card / surface */
+  --card-bg: #22252b;
+
+  /* Borders & dividers */
+  --border: #2f333a;
+
+  /* Toggle colors */
+  --toggle-bg: #3b3f46;
+  --toggle-ball: #ffffff;
+  --toggle-bg-active: #3b82f6;
+}
+
+/* Apply globally */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Card/UI elements */
+.card,
+.modal-content {
+  background-color: var(--card-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+/* ==========================
+   THEME-AWARE TABLE (FINAL)
+========================== */
+
+.table-theme {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Header */
+.table-theme thead th {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Base cell styling */
+.table-theme td,
+.table-theme th {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* STRIPED ROWS — MUST TARGET TDs */
+.table-theme.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: color-mix(
+    in srgb,
+    var(--card-bg) 92%,
+    var(--text) 8%
+  );
+}
+
+/* Hover */
+.table-theme tbody tr:hover > * {
+  background-color: color-mix(
+    in srgb,
+    var(--card-bg) 88%,
+    var(--text) 12%
+  );
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+  background: var(--card-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+/* Buttons remain Bootstrap colors */
+
+/* ==========================
+   PREMIUM THEME TOGGLE
+========================== */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Hide checkbox */
+.theme-toggle input {
+  display: none;
+}
+
+/* Track */
+.toggle-track {
+  width: 60px;
+  height: 30px;
+  background: var(--toggle-bg);
+  border-radius: 30px;
+  position: relative;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+/* Thumb */
+.toggle-thumb {
+  width: 26px;
+  height: 26px;
+  background: var(--toggle-ball);
+  border-radius: 50%;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+  background 0.3s ease;
+  font-size: 16px;
+}
+
+/* Slide thumb to the right when dark */
+.theme-toggle input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(30px);
+}
+
+/* Icon inside the thumb */
+.toggle-thumb .icon {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.bg-surface {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.dark .text-muted {
+  color: #9ca3af !important;
+}
