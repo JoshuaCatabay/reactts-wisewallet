@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { useWallet } from "../../context/useWallet";
 import { getSimpleMonthlySummaries } from "../../utils/calculateTotals";
 

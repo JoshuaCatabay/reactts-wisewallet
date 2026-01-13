@@ -35,7 +35,6 @@ export function importCSV(text: string): ImportResult {
     }
 
     const [
-      id,
       type,
       description,
       amountRaw,
