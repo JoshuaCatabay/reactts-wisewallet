@@ -9,7 +9,7 @@ interface Props {
 
 export default function TransactionTable({ transactions, onDelete, onEdit }: Props) {
   return (
-    <table className="table table-striped table-theme">
+    <table className="table table-theme">
       <thead>
         <tr>
           <th>Description</th>

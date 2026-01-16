@@ -69,126 +69,109 @@ export default function Summary({ onOpenStartingBalance }: SummaryProps) {
     "₱" + n.toLocaleString("en-US", { minimumFractionDigits: 2 });
 
   return (
-    <div className="container mt-4">
+    <div className="mt-4">
       <div className="card shadow-sm">
         <div className="card-body">
           <h3 className="fw-bold mb-4">Summary</h3>
 
-          <div className="row g-4">
-            {/* Starting Balance */}
-            <div className="col-md-3">
-              <div>
-                <div className="text-muted small">
-                  Starting Balance
-                </div>
+          <div className="row g-3 g-md-4">
+  {/* Starting Balance */}
+  <div className="col-6 col-md-3">
+    <div>
+      <div className="text-muted small">Starting Balance</div>
 
-                {startingBalance === 0 ? (
-                  <button
-                    className="btn btn-sm btn-outline-primary mt-1"
-                    onClick={onOpenStartingBalance}
-                  >
-                    + Starting Balance
-                  </button>
-                ) : (
-                  <div className="d-flex align-items-center gap-2">
-                    <div className="fw-bold fs-5">
-                      {format(startingBalance)}
-                    </div>
-                    <button
-                      className="btn btn-sm btn-outline-primary mt-1"
-                      onClick={onOpenStartingBalance}
-                    >
-                      Edit
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
+      {startingBalance === 0 ? (
+        <button
+          className="btn btn-sm btn-outline-primary mt-1"
+          onClick={onOpenStartingBalance}
+        >
+          + Starting Balance
+        </button>
+      ) : (
+        <div className="fw-bold fs-6 fs-md-5 text-nowrap">
+          {format(startingBalance)}
+        </div>
+      )}
+    </div>
+  </div>
 
-            {/* Monthly Income */}
-            <div className="col-md-3">
-              <div>
-                <div className="text-success small">
-                  Monthly Income
-                </div>
-                <div className="fw-bold fs-5">
-                  {format(monthlyIncome)}
-                </div>
-              </div>
-            </div>
+  {/* Bills */}
+  <div className="col-6 col-md-3">
+    <div>
+      <div className="text-danger small">Monthly Bills</div>
+      <div className="fw-bold fs-6 fs-md-5 text-nowrap">
+        {format(billTotal)}
+      </div>
+    </div>
+  </div>
 
-            {/* Bills */}
-            <div className="col-md-3">
-              <div>
-                <div className="text-danger small">
-                  Bills
-                </div>
-                <div className="fw-bold fs-5">
-                  {format(billTotal)}
-                </div>
-              </div>
-            </div>
+  {/* Monthly Income */}
+  <div className="col-6 col-md-3">
+    <div>
+      <div className="text-success small">Monthly Income</div>
+      <div className="fw-bold fs-6 fs-md-5 text-nowrap">
+        {format(monthlyIncome)}
+      </div>
+    </div>
+  </div>
 
-            {/* Daily Expenses */}
-            <div className="col-md-3">
-              <div>
-                <div className="text-warning small">
-                  Daily Expenses (Monthly)
-                </div>
-                <div className="fw-bold fs-5">
-                  {format(dailyTotal)}
-                  <span className="text-muted small ms-2">
-                    ({format(dailyExpensePerDay)} / day)
-                  </span>
-                </div>
-              </div>
-            </div>
+  {/* Daily Expenses */}
+  <div className="col-6 col-md-3">
+    <div>
+      <div className="text-warning small">
+        Daily Expenses (Monthly)
+      </div>
+        <div className="fw-bold fs-6 fs-md-5 text-nowrap">
+          {format(dailyTotal)}
+          <span
+            className="text-muted fw-normal fs-8 fs-md-6 ms-md-2 ms-1"
+          >
+            ({format(dailyExpensePerDay)}/day)
+          </span>
+        </div>
+    </div>
+  </div>
 
-            {/* Purchases */}
-            <div className="col-md-3">
-              <div>
-                <div className="text-info small">
-                  Purchases
-                </div>
-                <div className="fw-bold fs-5">
-                  {format(purchaseTotal)}
-                  <span className="text-muted small ms-1">
-                    ({purchaseCount})
-                  </span>
-                </div>
-              </div>
-            </div>
+  {/* Empty spacer to align Purchases on mobile */}
+  <div className="d-none d-md-block col-md-3"></div>
 
-            {/* Total Expenses */}
-            <div className="col-md-3">
-              <div>
-                <div className="text-danger small">
-                  Total Expenses
-                </div>
-                <div className="fw-bold fs-4">
-                  {format(totalExpenses)}
-                </div>
-              </div>
-            </div>
+  {/* Purchases */}
+  <div className="col-6 col-md-3">
+    <div>
+      <div className="text-info small">Purchases</div>
+      <div className="fw-bold fs-6 fs-md-5 text-nowrap">
+        {format(purchaseTotal)}
+        <span className="text-muted small ms-1">
+          ({purchaseCount})
+        </span>
+      </div>
+    </div>
+  </div>
 
-            {/* Remaining */}
-            <div className="col-md-3">
-              <div>
-                <div className="text-primary small">
-                  Remaining Money
-                </div>
-                <div
-                  className={`fw-bold fs-4 ${
-                    remaining < 0
-                      ? "text-danger"
-                      : "text-success"
-                  }`}
-                >
-                  {format(remaining)}
-                </div>
-              </div>
-            </div>
-          </div>
+  {/* Remaining Money */}
+  <div className="col-6 col-md-3">
+    <div>
+      <div className="text-danger small">Total Expenses</div>
+      <div className="fw-bold fs-6 fs-md-4 text-nowrap">
+        {format(totalExpenses)}
+      </div>
+    </div>
+  </div>
+
+  {/* Total Expenses */}
+  <div className="col-6 col-md-3">
+    <div>
+      <div className="text-primary small">Remaining Money</div>
+            <div
+        className={`fw-bold fs-6 fs-md-4 text-nowrap ${
+          remaining < 0 ? "text-danger" : "text-success"
+        }`}
+      >
+        {format(remaining)}
+      </div>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </div>

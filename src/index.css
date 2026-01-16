@@ -75,9 +75,7 @@ body {
   border-color: var(--border) !important;
 }
 
-/* ==========================
-   THEME-AWARE TABLE (FINAL)
-========================== */
+/* THEME-AWARE TABLE */
 
 .table-theme {
   background-color: var(--card-bg);
@@ -92,29 +90,19 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-/* Base cell styling */
-.table-theme td,
-.table-theme th {
+/* Body cells — SAME background for ALL rows */
+.table-theme tbody td {
   background-color: var(--card-bg);
   color: var(--text);
   border-color: var(--border);
 }
 
-/* STRIPED ROWS — MUST TARGET TDs */
-.table-theme.table-striped > tbody > tr:nth-of-type(odd) > * {
+/* Optional hover (subtle, works in both modes) */
+.table-theme tbody tr:hover td {
   background-color: color-mix(
     in srgb,
-    var(--card-bg) 92%,
-    var(--text) 8%
-  );
-}
-
-/* Hover */
-.table-theme tbody tr:hover > * {
-  background-color: color-mix(
-    in srgb,
-    var(--card-bg) 88%,
-    var(--text) 12%
+    var(--card-bg) 90%,
+    var(--text) 10%
   );
 }
 
@@ -127,11 +115,7 @@ textarea {
   border-color: var(--border) !important;
 }
 
-/* Buttons remain Bootstrap colors */
-
-/* ==========================
-   PREMIUM THEME TOGGLE
-========================== */
+/* PREMIUM THEME TOGGLE */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -198,3 +182,33 @@ textarea {
 .dark .text-muted {
   color: #9ca3af !important;
 }
+
+/* TABLE ROUNDED CORNERS */
+.table-theme {
+  border-radius: 0.75rem; /* subtle, modern */
+  overflow: hidden;       /* THIS is the key */
+}
+
+/* MOBILE TABLE DENSITY */
+@media (max-width: 576px) {
+  .table-theme {
+    font-size: 0.85rem; /* shrink table text */
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .table-theme td,
+  .table-theme th {
+    padding: 0.5rem; /* tighter cells */
+  }
+  .table-theme .btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .table-theme .d-flex.gap-2 {
+    gap: 0.25rem !important;
+  }
+}
+

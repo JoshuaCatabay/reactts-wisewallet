@@ -76,42 +76,48 @@ export default function App() {
         onExport={actions.openExportModal}
         onImport={actions.openImportModal}
       />
+        {/* setSortDateDirection("none"); disable date sorting */}
+        <div className="row g-2 g-md-3 mb-4">
+  {/* Filter by Type */}
+  <div className="col-6 col-md-4">
+    <label className="form-label fw-bold small small text-muted">
+      Filter by Type
+    </label>
+    <select
+      className="form-select form-select-sm form-select-md"
+      value={filterType}
+      onChange={(e) =>
+        setFilterType(
+          e.target.value as "all" | "income" | "bill" | "daily" | "purchase"
+        )
+      }
+    >
+      <option value="all">All</option>
+      <option value="income">Income</option>
+      <option value="bill">Bills</option>
+      <option value="daily">Daily</option>
+      <option value="purchase">Purchases</option>
+    </select>
+  </div>
 
-        <div className="row g-3 mb-4">
-          {/* Filter by Type */}
-          <div className="col-md-4">
-            <label className="form-label fw-bold">Filter by Type</label>
-            <select
-              className="form-select"
-              value={filterType}
-              onChange={(e) =>
-                setFilterType(e.target.value as "all" | "income" | "bill" | "daily" | "purchase")
-              }
-            >
-              <option value="all">All Transactions</option>
-              <option value="income">Income</option>
-              <option value="bill">Bills</option>
-              <option value="daily">Daily Expenses</option>
-              <option value="purchase">Purchases</option>
-            </select>
-          </div>
+  {/* Sort by Amount */}
+  <div className="col-6 col-md-4">
+    <label className="form-label fw-bold small small text-muted">
+      Sort by Amount
+    </label>
+    <select
+      className="form-select form-select-sm"
+      value={sortAmountDirection}
+      onChange={(e) =>
+        setSortAmountDirection(e.target.value as "asc" | "desc")
+      }
+    >
+      <option value="asc">Low → High</option>
+      <option value="desc">High → Low</option>
+    </select>
+  </div>
+</div>
 
-            {/* Sort by Amount */}
-            <div className="col-md-4">
-              <label className="form-label fw-bold">Sort by Amount</label>
-              <select
-                className="form-select"
-                value={sortAmountDirection}
-                onChange={(e) => {
-            setSortAmountDirection(e.target.value as "asc" | "desc");
-            // setSortDateDirection("none"); // disable date sorting
-          }}
-              >
-                <option value="asc">Low → High</option>
-                <option value="desc">High → Low</option>
-              </select>
-            </div>
-          </div>
 
         {/* MAIN TABLE */}
         <TransactionTable
