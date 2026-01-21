@@ -7,11 +7,23 @@ interface Props {
 }
 
 export default function TableRow({ transaction, onDelete, onEdit }: Props) {
+  const isIncome = transaction.type === "income";
+
   return (
     <tr>
-      <td>{transaction.description}</td>
+      <td>
+        <span
+          className={`tx-desc ${
+            isIncome ? "tx-income" : "tx-expense"
+          }`}
+        >
+          {transaction.description}
+        </span>
+      </td>
+
       <td>₱{transaction.amount.toLocaleString()}</td>
       <td>{new Date(transaction.date).toLocaleDateString()}</td>
+
       <td>
         <div className="d-flex gap-2">
           <button

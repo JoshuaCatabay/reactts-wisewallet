@@ -212,3 +212,39 @@ textarea {
   }
 }
 
+/* ==========================
+   TRANSACTION DESCRIPTION TAG
+========================== */
+
+.tx-desc {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Income (Salary) */
+.tx-income {
+  border-color: #22c55e; /* green-500 */
+  color: #22c55e;
+}
+
+/* Expense */
+.tx-expense {
+  border-color: #ef4444; /* red-500 */
+  color: #ef4444;
+}
+
+/* Dark mode contrast tuning */
+.dark .tx-income {
+  border-color: #4ade80;
+  color: #4ade80;
+}
+
+.dark .tx-expense {
+  border-color: #f87171;
+  color: #f87171;
+}
